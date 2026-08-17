@@ -232,6 +232,11 @@ p {
 }
 
 
+.nav-link.active {
+    color: #ff4d67;
+}
+
+
 .nav-cta {
     display: inline-flex;
     justify-content: center;
@@ -473,6 +478,8 @@ p {
 
 
 .watch-screen {
+    position: relative;
+
     height: 100%;
 
     padding: 20px 16px;
@@ -487,6 +494,8 @@ p {
         );
 
     color: white;
+
+    overflow: hidden;
 }
 
 
@@ -550,12 +559,16 @@ p {
 
 
 .watch-stats {
+    position: absolute;
+
+    left: 16px;
+    right: 16px;
+    bottom: 14px;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
 
     gap: 8px;
-
-    margin-top: 25px;
 }
 
 
