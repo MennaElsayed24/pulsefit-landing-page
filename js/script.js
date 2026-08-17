@@ -388,3 +388,95 @@ pricingToggle.addEventListener("click", () => {
     });
 
 });
+
+
+/* =========================================
+   7. ACTIVE NAVIGATION LINK
+========================================= */
+
+const sections =
+    document.querySelectorAll("main section[id]");
+
+
+function updateActiveNav() {
+
+    const scrollPosition =
+        window.scrollY + 120;
+
+    let currentSection = "home";
+
+
+    sections.forEach((section) => {
+
+        const sectionTop =
+            section.offsetTop;
+
+        const sectionHeight =
+            section.offsetHeight;
+
+
+        if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+        ) {
+
+            currentSection = section.id;
+
+        }
+
+    });
+
+
+    navLinks.forEach((link) => {
+
+        link.classList.remove("active");
+
+
+        const linkTarget =
+            link.getAttribute("href");
+
+
+        if (
+            linkTarget === `#${currentSection}`
+        ) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+}
+
+
+/* Update active link while scrolling */
+
+window.addEventListener(
+    "scroll",
+    updateActiveNav
+);
+
+
+/* Update active link when a navigation link is clicked */
+
+navLinks.forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.forEach((navLink) => {
+
+            navLink.classList.remove("active");
+
+        });
+
+
+        link.classList.add("active");
+
+    });
+
+});
+
+
+/* Set Home as active when the page first loads */
+
+updateActiveNav();
